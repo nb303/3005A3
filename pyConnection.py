@@ -23,12 +23,17 @@ def getAllStudents():
 def addStudent(first_name, last_name, email, enrollment_date):
     conn = connect()
     cur = conn.cursor()
-    cur.execute(
-        "INSERT INTO students (first_name, last_name, email, enrollment_date) VALUES (%s, %s, %s, %s)",
-        (first_name, last_name, email, enrollment_date)
-    )
-    conn.commit()
-    conn.close()
+    try:
+        cur.execute(
+            "INSERT INTO students (first_name, last_name, email, enrollment_date) VALUES (%s, %s, %s, %s)",
+            (first_name, last_name, email, enrollment_date)
+        )
+        conn.commit()
+        print("Student added successfully!")
+    except psycopg2.errors.UniqueViolation:
+        print("Error: Email address already exists in the database.")
+    finally:
+        conn.close()
 
 
 def updateStudentEmail(student_id, new_email):
@@ -51,23 +56,27 @@ def deleteStudent(student_id):
     conn.commit()
     conn.close()
 
+
+
 def main():
-  print("All students listed: ")
-  getAllStudents()
+    print("All students listed: ")
+    print(getAllStudents())
 
-  print("\n Adding student Nitika to the school:")
-  addStudent("Nitika", "Bhardwaj", "nitikabhardwaj@cmail.carleton.ca", "2024-03-17")
-  print("\n All students in the school after adding Nitika: ")
-  addStudent()
+    print("\nAdding student Nitika to the school:")
+    addStudent("Nitika", "Bhardwaj", "nitikabhardwaj@cmail.carleton.ca", "2024-03-17")
+    print("\nAll students in the school after adding Nitika: ")
+    print(getAllStudents())
 
-  print("\n Updating the email for student with student_id 1")
-  updateStudentEmail(1, "john_new_email@example.com")
-  print("\n All the students in this school after updating the email for student with student_id 1: ")
-  updateStudentEmail()
+    print("\nUpdating the email for student with student_id 1")
+    updateStudentEmail(1, "john_new_email@example.com")
+    print("\nAll the students in this school after updating the email for student with student_id 1: ")
+    print(getAllStudents())
 
-  print("\n Deleting the student with student_id 2")
-  deleteStudent(2)
-  print("\n All the students in this school after deleting the student with student_id 2: ")
-  deleteStudent()
+    print("\nDeleting the student with student_id 2")
+    deleteStudent(2)
+    print("\nAll the students in this school after deleting the student with student_id 2: ")
+    print(getAllStudents())
 
 main()
+
+

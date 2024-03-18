@@ -53,21 +53,21 @@ def deleteStudent(student_id):
 
 def main():
   print("All students listed: ")
-  displayAllStudents()
+  getAllStudents()
 
   print("\n Adding student Nitika to the school:")
   addStudent("Nitika", "Bhardwaj", "nitikabhardwaj@cmail.carleton.ca", "2024-03-17")
   print("\n All students in the school after adding Nitika: ")
-  displayAllStudents()
+  addStudent()
 
   print("\n Updating the email for student with student_id 1")
   updateStudentEmail(1, "john_new_email@example.com")
   print("\n All the students in this school after updating the email for student with student_id 1: ")
-  displayAllStudents()
+  updateStudentEmail()
 
   print("\n Deleting the student with student_id 2")
   deleteStudent(2)
   print("\n All the students in this school after deleting the student with student_id 2: ")
-  displayAllStudents()
+  deleteStudent()
 
 main()

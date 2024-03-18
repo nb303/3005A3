@@ -16,3 +16,7 @@
   Run the application with python3 pyConnection.py
 
   Run the database on PGAdmin to see the updated table
+
+
+  # Youtube Explanation
+  https://youtu.be/7x5EhJhuJwM

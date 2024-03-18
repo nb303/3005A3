@@ -4,7 +4,7 @@ from psycopg2 import sql
 # Function to connect to the PostgreSQL database
 def connect():
     conn = psycopg2.connect(
-        dbname="School",
+        dbname="SchoolApplication",
         user="postgres",
         password="7685",
         host="localhost",

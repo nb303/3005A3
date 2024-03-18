@@ -1,4 +1,4 @@
-iimport psycopg2
+import psycopg2
 from psycopg2 import sql
 
 # Function to connect to the PostgreSQL database

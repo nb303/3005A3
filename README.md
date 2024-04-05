@@ -18,5 +18,4 @@
   Run the database on PGAdmin to see the updated table
 
 
-  # Youtube Explanation
-  https://youtu.be/7x5EhJhuJwM
+
